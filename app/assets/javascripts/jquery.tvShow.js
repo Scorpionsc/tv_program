@@ -245,6 +245,7 @@
                             dataType: 'json',
                             type: 'post',
                             success: function ( json ) {
+                                console.log(1111);
 console.log(json);
                                     VK.api("photos.saveWallPhoto", {
                                         server: json.server,
