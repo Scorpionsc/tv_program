@@ -99,7 +99,7 @@
 
                         location.hash = '';
 
-                        $( '.sharing' ).trigger('click');
+                        // $( '.sharing' ).trigger('click');
 
                     }
 
