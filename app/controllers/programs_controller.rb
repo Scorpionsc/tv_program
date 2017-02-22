@@ -38,10 +38,8 @@ class ProgramsController < ApplicationController
 
   def upload_to_vk
     url = params[ 'upload_url' ]
-    p url
-    VkontakteApi.upload(url: url, photo: ["public/#{ params[ 'image' ] }", 'image/jpeg'])
-
-    render status: :no_content
+    response = VkontakteApi.upload(url: url, photo: ["public/#{ params[ 'image' ] }", 'image/jpeg'])
+    render json: response.to_json
   end
 
   private
