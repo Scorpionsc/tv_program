@@ -181,6 +181,7 @@
                 } );
             },
             _vkLogin= function(canvas){
+            console.log(canvas);
                 VK.Auth.login( function (e) {
                     console.log(e);
                     _share( canvas.toDataURL( 'image/jpeg' ) );
