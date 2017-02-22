@@ -18,15 +18,13 @@ class ProgramsController < ApplicationController
 
   def save_file
 
-    # p params[:image].read
-
     image_name = "#{ params[ :date ] }_#{ params[ 'lang' ] }_total.jpeg"
 
-    unless File.exist?( "app/assets/images/#{ image_name }" )
+    Dir.mkdir("public/uploads") unless File.exists?("public/uploads")
 
-      # uri = URI::Data.new( params[ 'image' ] )
+    unless File.exist?( "public/uploads/#{ image_name }" )
 
-      file = File.open( "app/assets/images/#{ image_name }", 'wb' )
+      file = File.open( "public/uploads/#{ image_name }", 'wb' )
 
       file.write (  params[:image].read )
 
@@ -34,8 +32,7 @@ class ProgramsController < ApplicationController
 
     end
 
-    render json: { path: ActionController::Base.helpers.asset_path( image_name ) }
-    # render layout: false
+    render json: { path: "uploads/#{ image_name }" }
 
   end
 
@@ -61,13 +58,15 @@ class ProgramsController < ApplicationController
 
       date = body[ :data ][ 'date' ]
 
-      body[ :data ][ 'programs' ].each do |program|
+      Dir.mkdir("public/uploads") unless File.exists?("public/uploads")
+
+        body[ :data ][ 'programs' ].each do |program|
 
         image_name = "#{ date }_#{ program[ 'realtime_begin' ] }.jpeg"
 
-        unless File.exist?( "app/assets/images/#{ image_name }" )
+        unless File.exist?( "public/uploads/#{ image_name }" )
 
-          file = File.open( "app/assets/images/#{ image_name }", 'wb' )
+          file = File.open( "public/uploads/#{ image_name }", 'wb' )
 
           file.write (open(program['image']['preview']).read )
 
