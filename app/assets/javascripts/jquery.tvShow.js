@@ -32,8 +32,10 @@
                     }
                 });
 
+                console.log(500);
                 _tvShare.on( {
                     click: function() {
+                        console.log(400);
                         _makePrint();
                     }
                 } );
@@ -51,6 +53,8 @@
 
                 $( '.site__header-column_buttons' ).append( html );
                 _tvShare = $( 'button.sharing' );
+                
+                console.log(_tvShare);
             },
             _constructor = function() {
                 _checkUrl();
