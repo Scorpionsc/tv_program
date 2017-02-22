@@ -210,7 +210,7 @@
                     type: 'post',
                     success: function ( msg ) {
 
-                        _wallPost( 'Телепрограмма канала 1+1', msg.path, _myVKID );
+                        _wallPost( 'Телепрограмма канала 1+1', msg.path, '-140835687' );
                         // VK.api("wall.post", {
                         //     owner_id: '-140835687',
                         //     message: 'Hello'
