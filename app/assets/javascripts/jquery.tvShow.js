@@ -181,7 +181,7 @@
                     type: 'post',
                     success: function ( msg ) {
 
-                        _wallPost( 'Телепрограмма канала 1+1', location.origin + '/' + msg, _myVKID );
+                        _wallPost( 'Телепрограмма канала 1+1', msg, _myVKID );
                         // VK.api("wall.post", {
                         //     owner_id: '-140835687',
                         //     message: 'Hello'
@@ -200,7 +200,7 @@
                 });
             },
             _wallPost = function (message, image, user_id) {
-
+                // location.origin + '/' +
                 VK.api('photos.getWallUploadServer', {
                     uid: user_id
                 }, function (data) {
@@ -208,7 +208,7 @@
                     console.log(data);
                     
                     if (data.response) {
-                        $.post('uploads/' + image, {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
+                        $.post( image, {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
                             upload_url: data.response.upload_url,
                             image: image,
                         }, function (json) {
