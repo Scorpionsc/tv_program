@@ -37,11 +37,53 @@
                 } );
 
             },
+            _addSharedButton = function() {
+                var token = localStorage.getItem('fb_token'),
+                    html = '';
+
+                if( token ){
+                    html = '<button class="sharing"></button>';
+                } else {
+                    html = '<a href="https://oauth.vk.com/authorize?client_id='+ _myVKID +'&redirect_uri=http://hackathon.websters.com.ua/&scope=+4&response_type=token&display=popup" class="sharing"></a>';
+                }
+
+                $( '.site__header-column_buttons' ).append( html );
+                _tvShare = $( 'button.sharing' );
+
+            },
+            _checkUrl = function() {
+
+                if( location.hash.indexOf( 'access_token' ) > -1 ) {
+
+                    var curString = location.hash.substring( 1 ).split( '&' ),
+                        stringData = {};
+
+                    curString.forEach( function (item) {
+                        var curItem = item.split( '=' );
+
+                        stringData[ curItem[ 0 ] ] = curItem[ 1 ];
+                    } );
+
+                    if( stringData[ 'access_token' ] ){
+
+                        localStorage.setItem('fb_token', stringData[ 'access_token' ]);
+
+                        location.hash = '';
+
+                        $( '.sharing' ).trigger('click');
+
+                    }
+
+                }
+
+            },
             _constructor = function() {
+                _checkUrl();
                 _initDatePicker();
                 _initVK();
                 _timestampToDate();
                 _siteTitleChange();
+                _addSharedButton();
                 _addEvents();
             },
             _dataURLtoBlob = function(dataURL) {
@@ -181,9 +223,7 @@
                 } );
             },
             _vkLogin= function(canvas){
-            console.log(VK);
                 VK.Auth.login( function (e) {
-                    console.log(e);
                     _share( canvas.toDataURL( 'image/jpeg' ) );
 
                 }, 4 );
