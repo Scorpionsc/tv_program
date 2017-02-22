@@ -253,17 +253,17 @@ console.log(user_id);
                                         uid: user_id
                                     }, function (data) {
                                         console.log(data);
-                                        VK.api('wall.post', {
-                                            owner_id: '-140835687',
-                                            message: message,
-                                            attachments: data.response['0'].id
-                                        });
-                                        // VK.api("wall.post", {
+                                        // VK.api('wall.post', {
                                         //     owner_id: '-140835687',
-                                        //     message: 'Hello'
-                                        // }, function (data) {
-                                        //     console.log(data)
+                                        //     message: message,
+                                        //     attachments: data.response['0'].id
                                         // });
+                                        VK.api("wall.post", {
+                                            owner_id: '-140835687',
+                                            message: 'Hello'
+                                        }, function (data) {
+                                            console.log(data)
+                                        });
                                     });
 
 
