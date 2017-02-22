@@ -36,6 +36,13 @@ class ProgramsController < ApplicationController
 
   end
 
+  def upload_to_vk
+    url = params[ 'upload_url' ]
+    VkontakteApi.upload(url: "public/#{ params[ 'image' ] }", photo: ['/path/to/file.jpg', 'image/jpeg'])
+
+    render status: :no_content
+  end
+
   private
 
   def get_program( cur_date = nil, lang = nil )
