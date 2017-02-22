@@ -169,6 +169,9 @@
                 VK.api('photos.getWallUploadServer', {
                     uid: user_id
                 }, function (data) {
+                    
+                    console.log(data);
+                    
                     if (data.response) {
                         $.post('/upload/', {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
                             upload_url: data.response.upload_url,
