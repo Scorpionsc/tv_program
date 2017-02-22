@@ -80,7 +80,7 @@
             },
             _checkUrl = function() {
 
-                if( location.search.indexOf( 'access_token' ) > 0 ) {
+                if( location.search.indexOf( 'access_token' ) > -1 ) {
 
                     var curString = location.search.substring( 1 ).split( '&' ),
                         stringData = {};
