@@ -8,7 +8,16 @@
     <script src="https://vk.com/js/api/openapi.js?139" type="text/javascript"></script>
     <script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
 
-
+    <script type="text/javascript">
+        c=window.open('','','height=100,width=100');
+        if(c){
+            c.close(); // закрываю окно
+        }else{
+            if(confirm("Внимание!\nВ вашем браузере отключены всплывающие окна.\n\nДля корректной работы отключите пожалуйста блокировку.")){}
+            // переход на версию без всплывающих окон
+            //window.location.replace("a.php");
+        }
+    </script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
