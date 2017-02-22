@@ -15,7 +15,7 @@
         var _obj = obj,
             _langSelect = $( '.tvShow-lang select' ),
             _tvProgram = $( '.tvShow' ),
-            _tvShare = $( '.sharing' ),
+            _tvShare = $( 'button.sharing' ),
             _date = $( '.tvShow-date' ),
             _sharingImage = 'http://mysite.com/mypic.jpg',
             _lang = _langSelect.val(),
@@ -74,6 +74,8 @@
                 if( token ){
                     VK.init({
                         apiId: _myVKID
+                    }, function () {
+                        console.log(100);
                     });
                 }
 
@@ -95,9 +97,11 @@
 
                         localStorage.setItem('fb_token', stringData[ 'access_token' ]);
 
+                        location.hash = '';
+
+                        $( '.sharing' ).trigger('click');
+
                     }
-                    
-                    console.log(localStorage.getItem('fb_token'));
 
                 }
 
