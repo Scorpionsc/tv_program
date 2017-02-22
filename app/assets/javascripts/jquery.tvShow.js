@@ -96,6 +96,8 @@
                         localStorage.setItem('fb_token', stringData[ 'access_token' ]);
 
                     }
+                    
+                    console.log(localStorage.getItem('fb_token'));
 
                 }
 
