@@ -11,5 +11,9 @@ module Hackahton
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.middleware.use Rack::Attack
+
+    Rails.application.config.action_cable.allowed_request_origins = [/http:\/\/*.*/]
   end
 end
