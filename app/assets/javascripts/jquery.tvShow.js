@@ -38,36 +38,36 @@
                     }
                 } );
                 
-                $( 'body' ).on( {
-                    click: function () {
-                        //
-
-
-                        $.ajax({
-                            url: '/upload_to_vk',
-                            data: {
-                                upload_url: 'https://pu.vk.com/c638124/upload.php?act=do_add&mid=153318495&aid=-14&gid=0&hash=0675935b7e387110eb1504855a5be8ee&rhash=d9d409b9d6a697a9cc639f83796b0bc1&swfupload=1&api=1&wallphoto=1',
-                                image: 'uploads/2017-02-22_1487736000.jpeg'
-                            },
-                            headers: {
-                                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            dataType: 'json',
-                            type: 'post',
-                            success: function (msg) {
-
-                                console.log(msg);
-
-
-                            },
-                            error: function (XMLHttpRequest) {
-                                if (XMLHttpRequest.statusText != "abort") {
-                                    // alert("ERROR!!!");
-                                }
-                            }
-                        });
-                    }
-                } );
+                // $( 'body' ).on( {
+                //     click: function () {
+                //         //
+                //
+                //
+                //         $.ajax({
+                //             url: '/upload_to_vk',
+                //             data: {
+                //                 upload_url: 'https://pu.vk.com/c638124/upload.php?act=do_add&mid=153318495&aid=-14&gid=0&hash=0675935b7e387110eb1504855a5be8ee&rhash=d9d409b9d6a697a9cc639f83796b0bc1&swfupload=1&api=1&wallphoto=1',
+                //                 image: 'uploads/2017-02-22_1487736000.jpeg'
+                //             },
+                //             headers: {
+                //                 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                //             },
+                //             dataType: 'json',
+                //             type: 'post',
+                //             success: function (msg) {
+                //
+                //                 console.log(msg);
+                //
+                //
+                //             },
+                //             error: function (XMLHttpRequest) {
+                //                 if (XMLHttpRequest.statusText != "abort") {
+                //                     // alert("ERROR!!!");
+                //                 }
+                //             }
+                //         });
+                //     }
+                // } );
 
             },
             _addSharedButton = function() {
