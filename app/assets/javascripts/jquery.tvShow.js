@@ -53,12 +53,12 @@
             },
             _constructor = function() {
                 _checkUrl();
-                _addEvents();
                 _initDatePicker();
                 _initVK();
                 _timestampToDate();
                 _siteTitleChange();
                 _addSharedButton();
+                _addEvents();
             },
             _initDatePicker = function() {
                 _date.datepicker( { 
