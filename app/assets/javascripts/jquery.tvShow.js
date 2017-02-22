@@ -13,23 +13,17 @@
 
         //private properties
         var _obj = obj,
-            _btn = _obj.find( '.tvShow__btn' ),
             _langSelect = $( '.tvShow-lang select' ),
             _tvProgram = $( '.tvShow' ),
             _tvShare = $( '.sharing' ),
             _date = $( '.tvShow-date' ),
+            _sharingImage = 'http://mysite.com/mypic.jpg',
             _lang = _langSelect.val(),
             _myVKID = 153318495,
             _siteTitle = $( '.site__title' );
 
         //private methods
         var _addEvents = function() {
-
-                _btn.on({
-                    'click': function() {
-                        _sendAjax();
-                    }
-                });
 
                 _langSelect.on({
                     'change': function() {
@@ -44,13 +38,22 @@
                     }
                 } );
 
-                $( '.site__title' ).on( {
-                    click: function () {
-                        console.log(1000);
-                        _makePrint();
-                    }
-                } );
-
+            },
+            _addSharedButton = function() {
+                $( '.site__header-column_buttons' ).append(
+                    VK.Share.button(
+                        {
+                            // url: 'http://mysite.com',
+                            title: '1+1 program',
+                            description: 'Программа телепередач на сегодня',
+                            image: _sharingImage,
+                            noparse: true
+                        },
+                        {
+                            type: 'custom',
+                            text: '<button class="sharing"></button>'}
+                    )
+                );
             },
             _constructor = function() {
                 _addEvents();
@@ -58,9 +61,7 @@
                 _initVK();
                 _timestampToDate();
                 _siteTitleChange();
-            },
-            _getImage = function () {
-
+                _addSharedButton();
             },
             _initDatePicker = function() {
                 _date.datepicker( { 
@@ -68,7 +69,7 @@
                     onSelect: function() {
                         _sendAjax();
                     }
-                } );
+                } ).datepicker( "setDate", new Date() );
             },
             _initVK = function() {
                 VK.init({
@@ -173,13 +174,6 @@
 
                     this.innerHTML = hours + ':' + minutes;
                 
-                } );
-            },
-            _sendWallPost = function( myPost ) {
-                console.log(5000);
-                VK.api("wall.post", {
-                    owner_id: -140835687,
-                    message: '1+1 tv program on' + $( '.tvShow__title' ).text()
                 } );
             },
             _siteTitleChange = function() {
