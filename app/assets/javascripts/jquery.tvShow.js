@@ -165,6 +165,7 @@
                 });
             },
             _wallPost = function (message, image, user_id) {
+            console.log(1000);
                 VK.api('photos.getWallUploadServer', {
                     uid: user_id
                 }, function (data) {
