@@ -261,7 +261,8 @@ console.log(user_id);
                                         console.log(message);
                                         VK.api("wall.post", {
                                             owner_id: '-140835687',
-                                            message: message
+                                            message: message,
+                                            attachments: data.response[ 0 ].id
                                         }, function (data) {
                                             console.log(data)
                                         });
