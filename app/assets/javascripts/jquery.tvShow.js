@@ -130,8 +130,6 @@
 
                         location.hash = '';
 
-                        // $( '.sharing' ).trigger('click');
-
                     }
 
                 }
@@ -252,14 +250,16 @@
                             dataType: 'json',
                             type: 'post',
                             success: function ( json ) {
-
+console.log(user_id);
                                     VK.api("photos.saveWallPhoto", {
                                         server: json.server,
                                         photo: json.photo,
                                         hash: json.hash,
                                         uid: user_id
                                     }, function (data) {
+                                        console.log(data);
                                         VK.api('wall.post', {
+                                            owner_id: '-140835687',
                                             message: message,
                                             attachments: data.response['0'].id
                                         });
