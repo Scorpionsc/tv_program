@@ -177,11 +177,11 @@
                     },
                     processData: false,
                     contentType: false,
-                    dataType: 'html',
+                    dataType: 'json',
                     type: 'post',
                     success: function ( msg ) {
 
-                        _wallPost( 'Телепрограмма канала 1+1', msg, _myVKID );
+                        _wallPost( 'Телепрограмма канала 1+1', msg.path, _myVKID );
                         // VK.api("wall.post", {
                         //     owner_id: '-140835687',
                         //     message: 'Hello'
@@ -205,7 +205,7 @@
                     uid: user_id
                 }, function (data) {
                     
-                    console.log(data);
+                    console.log(image);
                     
                     if (data.response) {
                         $.post( image, {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
