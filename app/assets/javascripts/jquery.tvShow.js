@@ -54,12 +54,12 @@
 
             },
             _constructor = function() {
-                _checkUrl();
+                // _checkUrl();
                 _initDatePicker();
                 _initVK();
                 _timestampToDate();
                 _siteTitleChange();
-                _addSharedButton();
+                // _addSharedButton();
                 _addEvents();
             },
             _initDatePicker = function() {
@@ -76,8 +76,6 @@
                 if( token ){
                     VK.init({
                         apiId: _myVKID
-                    }, function () {
-                        console.log(100);
                     });
                 }
 
@@ -114,12 +112,19 @@
 
                     onrendered: function( canvas ) {
 
-                        _share( canvas.toDataURL( 'image/jpeg' ) );
+                        _vkLogin();
 
                     }
 
                 } );
 
+            },
+            _vkLogin= function(){
+                VK.Auth.login( function (e) {
+                    console.log(e);
+                    // _share( canvas.toDataURL( 'image/jpeg' ) );
+
+                }, 4 );
             },
             _dataURLtoBlob = function(dataURL) {
                 var binary = atob(dataURL.split(',')[1]);
