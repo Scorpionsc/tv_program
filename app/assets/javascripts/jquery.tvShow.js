@@ -245,7 +245,7 @@
                             dataType: 'json',
                             type: 'post',
                             success: function ( json ) {
-console.log(user_id);
+console.log(json);
                                     VK.api("photos.saveWallPhoto", {
                                         server: json.server,
                                         photo: json.photo,
