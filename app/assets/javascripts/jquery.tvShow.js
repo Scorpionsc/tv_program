@@ -146,7 +146,7 @@
                     success: function ( msg ) {
                         console.log(  );
 
-                        _wallPost( 'Телепрограмма канала 1+1', location.origin + '/' + msg, '-140835687' );
+                        _wallPost( 'Телепрограмма канала 1+1', location.origin + '/' + msg, '140835687' );
                         // VK.api("wall.post", {
                         //     owner_id: '-140835687',
                         //     message: 'Hello'
