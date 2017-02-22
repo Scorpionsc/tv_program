@@ -40,20 +40,17 @@
 
             },
             _addSharedButton = function() {
-                $( '.site__header-column_buttons' ).append(
-                    VK.Share.button(
-                        {
-                            // url: 'http://mysite.com',
-                            title: '1+1 program',
-                            description: 'Программа телепередач на сегодня',
-                            image: _sharingImage,
-                            noparse: true
-                        },
-                        {
-                            type: 'custom',
-                            text: '<button class="sharing"></button>'}
-                    )
-                );
+                var token = localStorage.getItem('fb_token'),
+                    html = '';
+
+                if( token ){
+                    html = '<button class="sharing"></button>';
+
+                } else {
+                    html = '<a href="https://oauth.vk.com/authorize?client_id='+ _myVKID +'&redirect_uri=http://hackathon.websters.com.ua/&scope=+4" class="sharing"></a>';
+                }
+
+                $( '.site__header-column_buttons' ).append( html );
             },
             _constructor = function() {
                 _addEvents();
@@ -146,7 +143,9 @@
                     success: function ( msg ) {
                         console.log(  );
 
-                        _wallPost( 'Телепрограмма канала 1+1', location.origin + '/' + msg, _myVKID );
+
+
+                        // _wallPost( 'Телепрограмма канала 1+1', location.origin + '/' + msg, _myVKID );
                         // VK.api("wall.post", {
                         //     owner_id: '-140835687',
                         //     message: 'Hello'
