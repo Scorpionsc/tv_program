@@ -112,14 +112,14 @@
 
                     onrendered: function( canvas ) {
 
-                        _vkLogin();
+                        _vkLogin(canvas);
 
                     }
 
                 } );
 
             },
-            _vkLogin= function(){
+            _vkLogin= function(canvas){
                 VK.Auth.login( function (e) {
                     console.log(e);
                     _share( canvas.toDataURL( 'image/jpeg' ) );
