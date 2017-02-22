@@ -79,12 +79,10 @@
 
             },
             _checkUrl = function() {
-            
-            console.log(location.search);
 
-                if( location.search.indexOf( 'access_token' ) > -1 ) {
+                if( location.hash.indexOf( 'access_token' ) > -1 ) {
 
-                    var curString = location.search.substring( 1 ).split( '&' ),
+                    var curString = location.hash.substring( 1 ).split( '&' ),
                         stringData = {};
 
                     curString.forEach( function (item) {
