@@ -50,6 +50,7 @@
                 }
 
                 $( '.site__header-column_buttons' ).append( html );
+                _tvShare = $( 'button.sharing' );
             },
             _constructor = function() {
                 _checkUrl();
