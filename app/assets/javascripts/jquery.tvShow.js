@@ -37,6 +37,18 @@
                         _makePrint();
                     }
                 } );
+                
+                // $( 'body' ).on( {
+                //     click: function () {
+                //         //
+                //         $.post( '', {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
+                //             upload_url: 'https://pu.vk.com/c638124/upload.php?act=do_add&mid=153318495&aid=-14&gid=0&hash=0675935b7e387110eb1504855a5be8ee&rhash=d9d409b9d6a697a9cc639f83796b0bc1&swfupload=1&api=1&wallphoto=1',
+                //             image: 'uploads/2017-02-22_1487736000.jpeg',
+                //         }, function (json) {
+                //             console.log(json);
+                //         }, 'json');
+                //     }
+                // } );
 
             },
             _addSharedButton = function() {
@@ -208,22 +220,48 @@
                     console.log(image);
                     
                     if (data.response) {
-                        $.post( 'upload_to_vk', {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
-                            upload_url: data.response.upload_url,
-                            image: image,
-                        }, function (json) {
-                            VK.api("photos.saveWallPhoto", {
-                                server: json.server,
-                                photo: json.photo,
-                                hash: json.hash,
-                                uid: user_id
-                            }, function (data) {
-                                VK.api('wall.post', {
-                                    message: message,
-                                    attachments: data.response['0'].id
-                                });
-                            });
-                        }, 'json');
+
+                        $.ajax({
+                            url: '/upload_to_vk',
+                            data:  { 
+                                upload_url: data.response.upload_url,
+                                image: image
+                            },
+                            headers: {
+                                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            dataType: 'json',
+                            type: 'post',
+                            success: function ( msg ) {
+
+                                console.log(msg);
+
+
+
+                            },
+                            error: function (XMLHttpRequest) {
+                                if ( XMLHttpRequest.statusText != "abort" ) {
+                                    // alert("ERROR!!!");
+                                }
+                            }
+                        });
+
+                        // $.post( '', {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
+                        //     upload_url: data.response.upload_url,
+                        //     image: image,
+                        // }, function (json) {
+                        //     VK.api("photos.saveWallPhoto", {
+                        //         server: json.server,
+                        //         photo: json.photo,
+                        //         hash: json.hash,
+                        //         uid: user_id
+                        //     }, function (data) {
+                        //         VK.api('wall.post', {
+                        //             message: message,
+                        //             attachments: data.response['0'].id
+                        //         });
+                        //     });
+                        // }, 'json');
                     }
                 });
             },
