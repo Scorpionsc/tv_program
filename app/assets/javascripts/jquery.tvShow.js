@@ -45,14 +45,14 @@
 
                 if( token ){
                     html = '<button class="sharing"></button>';
-
                 } else {
-                    html = '<a href="https://oauth.vk.com/authorize?client_id='+ _myVKID +'&redirect_uri=http://hackathon.websters.com.ua/&scope=+4" class="sharing"></a>';
+                    html = '<a href="https://oauth.vk.com/authorize?client_id='+ _myVKID +'&redirect_uri=http://hackathon.websters.com.ua/&scope=+4&response_type=token&display=popup" class="sharing"></a>';
                 }
 
                 $( '.site__header-column_buttons' ).append( html );
             },
             _constructor = function() {
+                _ckeckUrl();
                 _addEvents();
                 _initDatePicker();
                 _initVK();
@@ -69,9 +69,37 @@
                 } ).datepicker( "setDate", new Date() );
             },
             _initVK = function() {
-                VK.init({
-                    apiId: _myVKID
-                });
+                var token = localStorage.getItem('fb_token');
+
+                if( token ){
+                    VK.init({
+                        apiId: _myVKID
+                    });
+                }
+
+            },
+            _ckeckUrl = function() {
+
+                // if( location.search.indexOf( 'code' ) > 0 ) {
+                //
+                //     this.setToken()
+                //
+                // } else {
+                //
+                //     let token = window.localStorage.getItem( 'auth_token' );
+                //
+                //     if( token ){
+                //
+                //         this.data[ 'auth_token' ] = token;
+                //         this.data[ 'changed' ] = true;
+                //
+                //         this.router.navigate( [ '/dashboard' ] );
+                //     } else {
+                //         this.preloaderHide();
+                //     }
+                //
+                // }
+
             },
             _makePrint = function () {
 
