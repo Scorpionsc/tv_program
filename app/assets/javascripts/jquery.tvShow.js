@@ -79,6 +79,8 @@
 
             },
             _checkUrl = function() {
+            
+            console.log(location.search);
 
                 if( location.search.indexOf( 'access_token' ) > -1 ) {
 
