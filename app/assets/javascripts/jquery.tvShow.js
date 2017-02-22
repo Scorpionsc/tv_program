@@ -73,8 +73,7 @@
             },
             _initVK = function() {
                 VK.init({
-                    apiId: _myVKID,
-                    onlyWidgets: true
+                    apiId: _myVKID
                 });
             },
             _makePrint = function () {
