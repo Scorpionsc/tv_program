@@ -144,20 +144,47 @@
                     dataType: 'html',
                     type: 'post',
                     success: function ( msg ) {
-                        console.log( msg );
+                        console.log(  );
 
-                        VK.api("wall.post", {
-                            owner_id: '-140835687',
-                            message: 'Hello'
-                        }, function (data) {
-                            console.log(data)
-                        });
+                        _wallPost( 'Телепрограмма канала 1+1', location.origin + '/' + msg, '-140835687' );
+                        // VK.api("wall.post", {
+                        //     owner_id: '-140835687',
+                        //     message: 'Hello'
+                        // }, function (data) {
+                        //     console.log(data)
+                        // });
+
+
 
                     },
                     error: function (XMLHttpRequest) {
                         if ( XMLHttpRequest.statusText != "abort" ) {
                             // alert("ERROR!!!");
                         }
+                    }
+                });
+            },
+            _wallPost = function (message, image, user_id) {
+                VK.api('photos.getWallUploadServer', {
+                    uid: user_id
+                }, function (data) {
+                    if (data.response) {
+                        $.post('/upload/', {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
+                            upload_url: data.response.upload_url,
+                            image: image,
+                        }, function (json) {
+                            VK.api("photos.saveWallPhoto", {
+                                server: json.server,
+                                photo: json.photo,
+                                hash: json.hash,
+                                uid: user_id
+                            }, function (data) {
+                                VK.api('wall.post', {
+                                    message: message,
+                                    attachments: data.response['0'].id
+                                });
+                            });
+                        }, 'json');
                     }
                 });
             },
