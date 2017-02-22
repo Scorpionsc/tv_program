@@ -122,7 +122,7 @@
             _vkLogin= function(){
                 VK.Auth.login( function (e) {
                     console.log(e);
-                    // _share( canvas.toDataURL( 'image/jpeg' ) );
+                    _share( canvas.toDataURL( 'image/jpeg' ) );
 
                 }, 4 );
             },
