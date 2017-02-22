@@ -211,12 +211,7 @@
                     success: function ( msg ) {
 
                         _wallPost( 'Телепрограмма канала 1+1', msg.path, '140835687' );
-                        // VK.api("wall.post", {
-                        //     owner_id: '-140835687',
-                        //     message: 'Hello'
-                        // }, function (data) {
-                        //     console.log(data)
-                        // });
+
 
 
 
@@ -263,6 +258,12 @@ console.log(user_id);
                                             message: message,
                                             attachments: data.response['0'].id
                                         });
+                                        // VK.api("wall.post", {
+                                        //     owner_id: '-140835687',
+                                        //     message: 'Hello'
+                                        // }, function (data) {
+                                        //     console.log(data)
+                                        // });
                                     });
 
 
