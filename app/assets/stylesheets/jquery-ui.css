@@ -365,14 +365,14 @@ a.ui-button:focus {
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
-	border: 1px solid #003eff;
-	background: #007fff;
+	border: 1px solid #222222;
+	background: #222222;
 	font-weight: normal;
 	color: #ffffff;
 }
 .ui-icon-background,
 .ui-state-active .ui-icon-background {
-	border: #003eff;
+	border: #222222;
 	background-color: #ffffff;
 }
 .ui-state-active a,
@@ -387,9 +387,9 @@ a.ui-button:active,
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-	border: 1px solid #dad55e;
-	background: #fffa90;
-	color: #777620;
+	border: 1px solid #ff4c4c;
+	background: #ff4c4c;
+	color: #fff;
 }
 .ui-state-checked {
 	border: 1px solid #dad55e;

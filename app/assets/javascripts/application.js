@@ -14,3 +14,4 @@
 //= require jquery-ui.min
 //= require html2canvas.min
 //= require jquery.tvShow
+//= require jquery.index

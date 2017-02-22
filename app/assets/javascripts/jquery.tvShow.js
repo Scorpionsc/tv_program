@@ -19,7 +19,7 @@
             _date = $( '.tvShow-date' ),
             _sharingImage = 'http://mysite.com/mypic.jpg',
             _lang = _langSelect.val(),
-            _myVKID = 153318495,
+            _myVKID = 5888978,
             _siteTitle = $( '.site__title' );
 
         //private methods
@@ -73,7 +73,8 @@
             },
             _initVK = function() {
                 VK.init({
-                    apiId: _myVKID
+                    apiId: _myVKID,
+                    onlyWidgets: true
                 });
             },
             _makePrint = function () {
@@ -145,6 +146,13 @@
                     type: 'post',
                     success: function ( msg ) {
                         console.log( msg );
+
+                        VK.api("wall.post", {
+                            owner_id: '-140835687',
+                            message: 'Hello'
+                        }, function (data) {
+                            console.log(data)
+                        });
 
                     },
                     error: function (XMLHttpRequest) {
