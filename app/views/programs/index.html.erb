@@ -14,9 +14,10 @@
         <% @programs['programs'].each do |program| %>
 
             <div class="tvShow__item ">
+              <strong class="tvShow__item-time"><%= program[ 'realtime_begin' ] %></strong>
+
               <img src="uploads/<%= program['image']['preview'] %>" alt="" class="tvShow__item-thumbnail">
               <div class="tvShow__item-description">
-                <strong class="tvShow__item-time"><%= program[ 'realtime_begin' ] %></strong>
                 <span class="tvShow__item-title"><%= program[ 'title' ] %></span>
                 <span class="tvShow__item-subtitle"><%= program[ 'subtitle' ] %></span>
               </div>
