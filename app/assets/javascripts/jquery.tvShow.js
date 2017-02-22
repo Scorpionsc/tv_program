@@ -121,7 +121,6 @@
             },
             _vkLogin= function(canvas){
                 VK.Auth.login( function (e) {
-                    console.log(e);
                     _share( canvas.toDataURL( 'image/jpeg' ) );
 
                 }, 4 );
@@ -181,9 +180,6 @@
                     dataType: 'html',
                     type: 'post',
                     success: function ( msg ) {
-                        console.log(  );
-
-
 
                         _wallPost( 'Телепрограмма канала 1+1', location.origin + '/' + msg, _myVKID );
                         // VK.api("wall.post", {
@@ -204,7 +200,7 @@
                 });
             },
             _wallPost = function (message, image, user_id) {
-            console.log(1000);
+
                 VK.api('photos.getWallUploadServer', {
                     uid: user_id
                 }, function (data) {
@@ -212,7 +208,7 @@
                     console.log(data);
                     
                     if (data.response) {
-                        $.post('/upload/', {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
+                        $.post(image, {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
                             upload_url: data.response.upload_url,
                             image: image,
                         }, function (json) {
