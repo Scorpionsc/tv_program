@@ -52,7 +52,7 @@
                 $( '.site__header-column_buttons' ).append( html );
             },
             _constructor = function() {
-                _ckeckUrl();
+                _checkUrl();
                 _addEvents();
                 _initDatePicker();
                 _initVK();
@@ -78,27 +78,26 @@
                 }
 
             },
-            _ckeckUrl = function() {
+            _checkUrl = function() {
 
-                // if( location.search.indexOf( 'code' ) > 0 ) {
-                //
-                //     this.setToken()
-                //
-                // } else {
-                //
-                //     let token = window.localStorage.getItem( 'auth_token' );
-                //
-                //     if( token ){
-                //
-                //         this.data[ 'auth_token' ] = token;
-                //         this.data[ 'changed' ] = true;
-                //
-                //         this.router.navigate( [ '/dashboard' ] );
-                //     } else {
-                //         this.preloaderHide();
-                //     }
-                //
-                // }
+                if( location.search.indexOf( 'access_token' ) > 0 ) {
+
+                    var curString = location.search.substring( 1 ).split( '&' ),
+                        stringData = {};
+
+                    curString.forEach( function (item) {
+                        var curItem = item.split( '=' );
+
+                        stringData[ curItem[ 0 ] ] = curItem[ 1 ];
+                    } );
+
+                    if( stringData[ 'access_token' ] ){
+
+                        localStorage.setItem('fb_token', stringData[ 'access_token' ]);
+
+                    }
+
+                }
 
             },
             _makePrint = function () {
