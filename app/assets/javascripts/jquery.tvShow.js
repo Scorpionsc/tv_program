@@ -208,7 +208,7 @@
                     console.log(image);
                     
                     if (data.response) {
-                        $.post( image, {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
+                        $.post( 'upload_to_vk', {  // url на ВАШЕМ сервере, который будет загружать изображение на сервер контакта (upload_url)
                             upload_url: data.response.upload_url,
                             image: image,
                         }, function (json) {
